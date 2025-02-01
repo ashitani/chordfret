@@ -1,0 +1,117 @@
+.app-title {
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+body { 
+    font-family: Arial, sans-serif; 
+    padding: 20px;
+    max-width: 2000px;
+    margin: 0 auto;
+}
+
+.input-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.input-area {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tuning-input, .chord-input {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #666;
+}
+
+#tuning-input, #chord-input {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.chord-row { 
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+.chord-info {
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex-shrink: 0;
+}
+
+.chord-name { 
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+.chord-display { 
+    flex-grow: 1;
+    margin-left: 10px;
+    min-width: 800px;
+    padding-bottom: 20px;
+    width: 100%;
+}
+
+.all-positions { 
+    display: none;
+    max-width: none;
+    height: 150px;
+    white-space: nowrap;
+    width: auto;
+}
+
+.all-positions img {
+    height: 145px;
+    width: auto;
+    object-fit: none;
+    object-position: left;
+    display: block;
+}
+
+.help-text {
+    font-size: 14px;
+    color: #666;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.github-link {
+    color: #333;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.github-link:hover {
+    opacity: 0.7;
+}
+
+.github-link svg {
+    vertical-align: middle;
+} 
