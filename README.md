@@ -4,11 +4,18 @@ Chordfret is a web-based tool that visualizes chord positions on any stringed in
 
 ![Chordfret](chordfret.png)
 
+## Live Demo
+
+Visit [https://ashitani.github.io/chordfret/](https://ashitani.github.io/chordfret/) to try it out.
+
+
 ## Features
 
 - Displays all possible positions for each chord
 - Supports various chord types (major, minor, 7th, etc.)
 - Customizable tuning for any number of strings
+- Adjustable fret range display (0-24 frets)
+- Scale overlay visualization
 - Color-coded notes by chord function
 - Supports both sharp and flat notation
 - Responsive web interface
@@ -45,8 +52,22 @@ Chordfret is a web-based tool that visualizes chord positions on any stringed in
 ## Usage
 
 1. Enter your instrument's tuning from highest to lowest string (e.g., "E,B,G,D,A,E" for standard guitar tuning)
-2. Enter a chord progression separated by commas (e.g., "Dm7,G7,Cmaj7")
-3. Press Enter to visualize the chords
+2. Set the desired fret range (min and max fret positions)
+3. Enter a chord progression separated by commas (e.g., "Dm7,G7,Cmaj7")
+4. Optionally, select a scale to overlay on the fretboard
+5. Press Enter to visualize the chords
+
+## Scale Overlay
+
+You can visualize scales alongside chord positions by selecting:
+- Scale Root Note (A through G#)
+- Scale Type:
+  - Minor Pentatonic
+  - Major Pentatonic
+  - Minor
+  - Major
+
+Scale notes are displayed as outlined circles, while chord tones remain solid colored based on their function.
 
 ## Color Coding
 
@@ -60,14 +81,6 @@ Chordfret is a web-based tool that visualizes chord positions on any stringed in
 ## Development
 
 The application is built using vanilla JavaScript, HTML, and CSS, with no external dependencies.
-
-## License
-
-MIT License
-
-## Live Demo
-
-Visit [https://ashitani.github.io/chordfret/](https://ashitani.github.io/chordfret/) to try it out.
 
 ## Installation
 
@@ -89,3 +102,7 @@ Or simply visit the live demo link above.
 3. Commit your changes (`git commit -m 'Add some amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request 
+
+## License
+
+MIT License

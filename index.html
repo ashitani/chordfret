@@ -15,10 +15,49 @@
     </h1>
     <div class="input-section">
         <div class="input-area">
-            <div class="tuning-input">
-                <label for="tuning-input">Tuning:</label>
-                <input type="text" id="tuning-input" value="E,B,G,D,A,E" 
-                       placeholder="Enter tuning from high to low (e.g., E,B,G,D,A,E)">
+            <div class="tuning-controls">
+                <div class="tuning-input">
+                    <label for="tuning-input">Tuning:</label>
+                    <input type="text" id="tuning-input" value="E,B,G,D,A,E" 
+                           placeholder="Enter tuning from high to low (e.g., E,B,G,D,A,E)">
+                </div>
+                <div class="fret-input">
+                    <label>Fret Range:</label>
+                    <div class="fret-range">
+                        <div class="fret-min">
+                            <input type="number" id="min-fret" value="0" min="0" max="22">
+                            <span>-</span>
+                        </div>
+                        <input type="number" id="max-fret" value="22" min="1" max="24">
+                    </div>
+                </div>
+                <div class="scale-input">
+                    <label>Scale:</label>
+                    <div class="scale-selectors">
+                        <select id="scale-root">
+                            <option value="">-- Select Root --</option>
+                            <option value="A">A</option>
+                            <option value="A#">A#</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="C#">C#</option>
+                            <option value="D">D</option>
+                            <option value="D#">D#</option>
+                            <option value="E">E</option>
+                            <option value="F">F</option>
+                            <option value="F#">F#</option>
+                            <option value="G">G</option>
+                            <option value="G#">G#</option>
+                        </select>
+                        <select id="scale-type">
+                            <option value="">-- Select Scale --</option>
+                            <option value="minor_pentatonic">Minor Pentatonic</option>
+                            <option value="major_pentatonic">Major Pentatonic</option>
+                            <option value="minor">Minor</option>
+                            <option value="major">Major</option>
+                        </select>
+                    </div>
+                </div>
             </div>
             <div class="chord-input">
                 <label for="chord-input">Chords:</label>

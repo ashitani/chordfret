@@ -29,22 +29,30 @@ body {
     gap: 10px;
 }
 
-.tuning-input, .chord-input {
+.tuning-controls {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 10px;
+    align-items: flex-start;
+}
+
+.tuning-input, .fret-input, .scale-input {
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
 
-label {
-    font-size: 14px;
-    font-weight: bold;
-    color: #666;
+#tuning-input {
+    width: 150px;
 }
 
-#tuning-input, #chord-input {
-    width: 100%;
-    padding: 8px;
-    font-size: 16px;
+#max-fret {
+    width: 60px;
+}
+
+.tuning-input input, .fret-input input {
+    padding: 6px;
+    font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
@@ -114,4 +122,73 @@ label {
 
 .github-link svg {
     vertical-align: middle;
+}
+
+.scale-selectors {
+    display: flex;
+    gap: 10px;
+}
+
+.scale-selectors select {
+    padding: 6px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#scale-root {
+    width: 150px;
+}
+
+#scale-type {
+    width: 150px;
+}
+
+/* フレットマーカーのスタイル */
+.fret-marker {
+    font-weight: bold;
+}
+
+/* スケールノートのスタイル */
+.scale-note {
+    stroke: #666666;
+    stroke-width: 2;
+    fill: none;
+}
+
+.scale-note.chord-note {
+    stroke: #666666;
+}
+
+.chord-input input {
+    width: 100%;
+    padding: 6px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;  /* paddingを含めた幅になるように */
+}
+
+.fret-range {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.fret-min {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+#min-fret, #max-fret {
+    width: 50px;
+    padding: 6px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.fret-range span {
+    color: #666;
 } 
