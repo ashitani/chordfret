@@ -75,9 +75,14 @@ const FLAT_TO_SHARP = {
 
 // コード名から構成音を計算する関数
 function chord2notes(chordName) {
-    let root, chordType;
+    let root, chordType, bassNote;
     
-    // フラットをシャープに変換
+    // スラッシュコードの処理
+    if (chordName.includes('/')) {
+        [chordName, bassNote] = chordName.split('/');
+    }
+    
+    // 既存のコード名パース処理
     if (chordName.startsWith('Db') || 
         chordName.startsWith('Eb') || 
         chordName.startsWith('Gb') || 
@@ -99,9 +104,21 @@ function chord2notes(chordName) {
     }
     
     const rootIdx = NOTES.indexOf(root);
-    return CHORD_TYPES[chordType].map(interval => 
+    const notes = CHORD_TYPES[chordType].map(interval => 
         NOTES[(rootIdx + interval) % 12]
     );
+    
+    // ベース音を追加
+    if (bassNote) {
+        // フラット→シャープの変換
+        if (FLAT_TO_SHARP[bassNote]) {
+            bassNote = FLAT_TO_SHARP[bassNote];
+        }
+        notes.push(bassNote);  // 配列にベース音を追加
+        notes.bassNote = bassNote;  // プロパティとしても保持
+    }
+    
+    return notes;
 }
 
 // 指定された音のリストに対して、それぞれの音を出せる全ての位置を返す
@@ -166,7 +183,7 @@ function generateChordProgression() {
         const allPositionsDiv = document.createElement('div');
         allPositionsDiv.className = 'all-positions';
         allPositionsDiv.style.display = 'block';
-        allPositionsDiv.appendChild(createChordCanvas(chord, allPositions, [minFret, maxFret], [1, 6]));
+        allPositionsDiv.appendChild(createChordCanvas(chord, allPositions, notes, [minFret, maxFret], [1, 6]));
         
         displayContainer.appendChild(allPositionsDiv);
         chordRow.innerHTML = chordInfo;
@@ -283,19 +300,29 @@ class GuitarChordVisualizer {
         }
     }
 
-    drawNote(string, fret, note, color = '#FF0000') {
+    drawNote(string, fret, note, color = '#FF0000', isBassNote = false) {
         const [minFret, maxFret] = this.fretRange;
         const x = ((fret - minFret) * this.fretWidth) + this.margin.left + this.fretWidth/2;
         const y = ((string - 1) * this.stringHeight) + this.margin.top;
         
-        // コードノートの円を描画（サイズを調整）
         this.ctx.beginPath();
-        this.ctx.arc(x, y, 9.5, 0, Math.PI * 2);  // 11 → 9.5
-        this.ctx.fillStyle = color;
-        this.ctx.fill();
+        this.ctx.arc(x, y, 9.5, 0, Math.PI * 2);
+        
+        if (isBassNote) {
+            // ベース音は白抜きの赤線
+            this.ctx.fillStyle = 'white';
+            this.ctx.fill();
+            this.ctx.strokeStyle = '#FF0000';
+            this.ctx.lineWidth = 2;
+            this.ctx.stroke();
+        } else {
+            // 通常のノートは従来通り
+            this.ctx.fillStyle = color;
+            this.ctx.fill();
+        }
         
         // 音名を描画
-        this.ctx.fillStyle = 'white';
+        this.ctx.fillStyle = isBassNote ? '#FF0000' : 'white';
         this.ctx.font = '12px Arial';
         const textWidth = this.ctx.measureText(note).width;
         this.ctx.fillText(note, x - textWidth/2, y + 4);
@@ -323,7 +350,7 @@ class GuitarChordVisualizer {
     }
 }
 
-function createChordCanvas(chord, positions, fretRange = [0, 22], stringRange = [1, 6]) {
+function createChordCanvas(chord, positions, notes, fretRange = [0, 22], stringRange = [1, 6]) {
     const canvas = document.createElement('canvas');
     const [minFret, maxFret] = fretRange;
     
@@ -413,9 +440,10 @@ function createChordCanvas(chord, positions, fretRange = [0, 22], stringRange = 
     // フレットボード上の音符の描画
     Object.entries(positions).forEach(([note, posList]) => {
         if (note === 'x') return;
+        const isBassNote = note === notes.bassNote;
         posList.forEach(([string, fret]) => {
-            if (string <= GUITAR_TUNING.length) {  // 現在の弦数を超える位置は描画しない
-                visualizer.drawNote(string, fret, note, noteColors[note]);
+            if (string <= GUITAR_TUNING.length) {
+                visualizer.drawNote(string, fret, note, noteColors[note], isBassNote);
             }
         });
     });

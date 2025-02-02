@@ -48,6 +48,7 @@ Visit [https://ashitani.github.io/chordfret/](https://ashitani.github.io/chordfr
 - Major 13th (e.g., Cmaj13)
 - Minor 13th (e.g., Cm13)
 - Power Chord (e.g., C5)
+- Slash Chords (e.g., C/G, Dm7/F)
 
 ## Usage
 
@@ -62,6 +63,8 @@ Visit [https://ashitani.github.io/chordfret/](https://ashitani.github.io/chordfr
 
 2. Set the desired fret range (min and max fret positions)
 3. Enter a chord progression separated by commas (e.g., "Dm7,G7,Cmaj7")
+    - For slash chords, use forward slash: "Dm7/G,C/E,Fmaj7/A"
+    - Bass notes are displayed with red outlines
 4. Optionally, select a scale to overlay on the fretboard
 5. Press Enter to visualize the chords
 
