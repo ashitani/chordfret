@@ -32,7 +32,18 @@ body {
 .tuning-controls {
     display: flex;
     gap: 15px;
-    margin-bottom: 10px;
+    align-items: flex-start;
+}
+
+.tuning-input {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.tuning-presets {
+    display: flex;
+    gap: 8px;
     align-items: flex-start;
 }
 
@@ -50,7 +61,8 @@ body {
     width: 60px;
 }
 
-.tuning-input input, .fret-input input {
+/* 共通のスタイル */
+.tuning-input select, .tuning-input input, .fret-input input, .scale-selectors select {
     padding: 6px;
     font-size: 14px;
     border: 1px solid #ccc;
@@ -129,13 +141,6 @@ body {
     gap: 10px;
 }
 
-.scale-selectors select {
-    padding: 6px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
 #scale-root {
     width: 150px;
 }
@@ -191,4 +196,8 @@ body {
 
 .fret-range span {
     color: #666;
+}
+
+#tuning-preset {
+    width: 280px;  /* プリセットの幅を少し広げる */
 } 

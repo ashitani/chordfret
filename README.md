@@ -52,6 +52,14 @@ Visit [https://ashitani.github.io/chordfret/](https://ashitani.github.io/chordfr
 ## Usage
 
 1. Enter your instrument's tuning from highest to lowest string (e.g., "E,B,G,D,A,E" for standard guitar tuning)
+
+    You can either:
+    - Select from preset tunings (Guitar, Bass, Ukulele)
+    - Manually enter tuning in the text box (comma-separated notes from low to high)
+
+    Note: When you select a preset, it will automatically update the display and 
+    populate the text box. You can then modify the text for custom tunings if needed.
+
 2. Set the desired fret range (min and max fret positions)
 3. Enter a chord progression separated by commas (e.g., "Dm7,G7,Cmaj7")
 4. Optionally, select a scale to overlay on the fretboard
@@ -81,6 +89,10 @@ Scale notes are displayed as outlined circles, while chord tones remain solid co
 ## Development
 
 The application is built using vanilla JavaScript, HTML, and CSS, with no external dependencies.
+
+Development was assisted by AI pair programming using Anthropic's Claude-3.5-Sonnet via Cursor.
+This collaborative approach helped in rapid prototyping and implementation of features while
+maintaining clean and maintainable code.
 
 ## Installation
 

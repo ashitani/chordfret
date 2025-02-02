@@ -17,9 +17,31 @@
         <div class="input-area">
             <div class="tuning-controls">
                 <div class="tuning-input">
-                    <label for="tuning-input">Tuning:</label>
-                    <input type="text" id="tuning-input" value="E,B,G,D,A,E" 
-                           placeholder="Enter tuning from high to low (e.g., E,B,G,D,A,E)">
+                    <label>Tuning:</label>
+                    <div class="tuning-presets">
+                        <select id="tuning-preset">
+                            <option value="">-- Select Preset --</option>
+                            <optgroup label="Guitar">
+                                <option value="E,A,D,G,B,E">6-String Standard (E,A,D,G,B,E)</option>
+                                <option value="B,E,A,D,G,B,E">7-String Standard - Low B (B,E,A,D,G,B,E)</option>
+                                <option value="D,A,D,G,B,E">Drop D (D,A,D,G,B,E)</option>
+                                <option value="D,A,D,F#,A,D">Open D (D,A,D,F#,A,D)</option>
+                                <option value="E,B,E,G#,B,E">Open E (E,B,E,G#,B,E)</option>
+                            </optgroup>
+                            <optgroup label="Bass">
+                                <option value="E,A,D,G">4-String Standard (E,A,D,G)</option>
+                                <option value="B,E,A,D,G">5-String Standard (B,E,A,D,G)</option>
+                                <option value="B,E,A,D,G,C">6-String Standard - High C (B,E,A,D,G,C)</option>
+                                <option value="D,A,D,G">Drop D Bass (D,A,D,G)</option>
+                            </optgroup>
+                            <optgroup label="Ukulele">
+                                <option value="G,C,E,A">Standard (G,C,E,A)</option>
+                                <option value="D,G,B,E">Baritone (D,G,B,E)</option>
+                            </optgroup>
+                        </select>
+                        <input type="text" id="tuning-input" value="E,A,D,G,B,E" 
+                               placeholder="Enter tuning from low to high">
+                    </div>
                 </div>
                 <div class="fret-input">
                     <label>Fret Range:</label>

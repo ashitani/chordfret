@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // 初期値を設定（6弦ギター）
-    document.getElementById('tuning-input').value = 'E,B,G,D,A,E';
+    // 初期値を設定（6弦ギター、低音→高音の順）
+    document.getElementById('tuning-input').value = 'E,A,D,G,B,E';
     document.getElementById('chord-input').value = 'Dm7,G7,Cmaj7';
+    GUITAR_TUNING = ['E','B','G','D','A','E'];  // 高音→低音の順
     generateChordProgression();
 
     // チューニング変更時のイベントリスナー
@@ -61,7 +62,7 @@ const CHORD_TYPES = {
 };
 
 // ギターの初期チューニング（高い弦から）
-const GUITAR_TUNING = ['E', 'B', 'G', 'D', 'A', 'E'];
+let GUITAR_TUNING = ['E', 'B', 'G', 'D', 'A', 'E'];
 
 // フラットからシャープへの変換マップ
 const FLAT_TO_SHARP = {
@@ -477,5 +478,21 @@ document.getElementById('max-fret').addEventListener('change', function(e) {
     if (maxFret <= minFret) {
         e.target.value = minFret + 1;
     }
+    updateChordDisplay();
+});
+
+document.getElementById('tuning-preset').addEventListener('change', function(e) {
+    const tuningInput = document.getElementById('tuning-input');
+    if (e.target.value) {
+        tuningInput.value = e.target.value;
+        // テキストは低音→高音だが、GUITAR_TUNINGは高音→低音の順にする
+        GUITAR_TUNING = e.target.value.split(',').map(note => note.trim()).reverse();
+        updateChordDisplay();
+    }
+});
+
+// tuning-inputの変更時も同様
+document.getElementById('tuning-input').addEventListener('change', function(e) {
+    GUITAR_TUNING = e.target.value.split(',').map(note => note.trim()).reverse();
     updateChordDisplay();
 }); 
